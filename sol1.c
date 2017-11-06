@@ -196,11 +196,11 @@ int main(int argc, char const *argv[])
 			{
 				continue;	
 			}
-			else if (e == ' ' && semi == 1)
+			else if (e == ' ' && ( semi == 1 || semi == 3))
 			{
-				printf("Invalid Syntax ! \n\n");
+				semi = 3;
 			}
-			else if ( (e == ',' || e == ';') && semi == 1)
+			else if ( (e == ',' || e == ';') && ( semi == 1 || semi == 3))
 			{	
 				if (state == -1)
 				{
@@ -229,15 +229,19 @@ int main(int argc, char const *argv[])
 				}
 				
 			}
-			else if(semi == 0){
+			else if( ( ( e >= 65 && e <= 90 ) || ( e >= 97 && e <= 122 ) || e == '_') && semi == 0 ){
 
-				if ( ( e >= 65 && e <= 90 ) || ( e >= 97 && e <= 122 ) || e == '_' )
-				{
-					semi = 1;
-				}
-				else{
-					printf("Invalid Syntax ! \n\n");
-				}
+				semi = 1;
+			}
+			// else if( ( ( e >= 48 && e <= 57 ) || ( e >= 65 && e <= 90 ) || ( e >= 97 && e <= 122 ) || e == '_') && semi == 1 ){
+
+			// 	semi = 1;
+			// }
+			else if( ( ( e >= 48 && e <= 57 ) || ( e >= 65 && e <= 90 ) || ( e >= 97 && e <= 122 ) || e == '_') && semi == 3 ){
+
+
+				printf("Invalid Syntax ! \n\n");
+				
 			}
 
 		}
