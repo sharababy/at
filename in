@@ -1,7 +1,10 @@
+#include <stdio.h>
+
 int main() { 
 	
 	int a;
+
 	char f,h,j;
 	printf("int kulwe");
-	// float p;
+	float p;
 }

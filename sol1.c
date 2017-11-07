@@ -213,7 +213,7 @@ int main(int argc, char const *argv[])
 		}
 		else if(state == 200){
 
-			if (e == '/')
+			if (e == '\"')
 			{
 				state = 0;
 			}
@@ -284,7 +284,7 @@ int main(int argc, char const *argv[])
 				
 			}
 
-			//printf("%d -> %c  |  semi = %d\n",state , e , semi);
+			printf("%d -> %c  |  semi = %d\n",state , e , semi);
 
 		}
 
