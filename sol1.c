@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /*	
 
@@ -238,8 +239,8 @@ int main(int argc, char const *argv[])
 			else if (e == '(')
 			{
 				variables[4]++;
-
 				state = 0;
+				printf("\n");
 			}
 			else if ( (e == ',' || e == ';') && ( semi == 1 || semi == 3))
 			{	
@@ -263,11 +264,14 @@ int main(int argc, char const *argv[])
 				if ( e == ';' )
 				{
 					state = 0;
+					
 				}
 				if ( e == ',' )
 				{
 					semi = 0;
 				}
+
+				printf("\n");
 				
 			}
 			else if( ( ( e >= 65 && e <= 90 ) || ( e >= 97 && e <= 122 ) || e == '_') && semi == 0 ){
@@ -284,7 +288,13 @@ int main(int argc, char const *argv[])
 				
 			}
 
-			printf("%d -> %c  |  semi = %d\n",state , e , semi);
+			
+			if (isalnum(e) > 0)
+			{
+				printf("%c",e);
+			}
+			
+			//printf("%d -> %c  |  semi = %d\n",state , e , semi);
 
 		}
 
@@ -292,14 +302,12 @@ int main(int argc, char const *argv[])
 
 	}
 
+
+	printf("\n\n==== Report ====\n\n");
 	printf("Number of Ints: %d\n", variables[0]);
-
 	printf("Number of Floats: %d\n", variables[1]);
-
 	printf("Number of Double: %d\n", variables[2]);
-
 	printf("Number of Chars: %d\n", variables[3]);
-
 	printf("Number of Functions : %d\n", variables[4]);
 
 	fclose(in);
