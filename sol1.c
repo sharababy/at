@@ -12,6 +12,11 @@
 
 	0 -c-> 12 -h-> 13 -a-> 14 -r-> 104 - -> -4
 
+	state for " => 200
+	state for ' => 201
+
+	state for / => 300
+
 	Legal Types: 
 	int float double char 
 	-1   -2     -3    -4
@@ -34,7 +39,7 @@ int main(int argc, char const *argv[])
 
 	while( fread(&e , 1 , 1 , in) == 1){
 
-		if (state >= 0)
+		if (state >= 0 && state <  200)
 		{
 			
 			if (e == 'i')
@@ -185,11 +190,41 @@ int main(int argc, char const *argv[])
 					state = -4;
 				}
 			}
-
-
+			else if (e == '\"')
+			{
+				state = 200;
+			}
+			else if (e == '/')
+			{
+				if (state != 299)
+				{
+					state = 299;
+				}
+				else if (state == 299)
+				{
+					state = 300;
+				}
+				
+			}
+			else{
+				state = 0;
+			}
 
 		}
-		
+		else if(state == 200){
+
+			if (e == '/')
+			{
+				state = 0;
+			}
+		}
+		else if(state == 300){
+
+			if (e == '\n')
+			{
+				state = 0;
+			}
+		}
 		else if (state < 0)
 		{
 			if (e == ' ' && semi == 0)
@@ -249,7 +284,7 @@ int main(int argc, char const *argv[])
 				
 			}
 
-			printf("%d -> %c  |  semi = %d\n",state , e , semi);
+			//printf("%d -> %c  |  semi = %d\n",state , e , semi);
 
 		}
 
