@@ -2,10 +2,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-
-#define RED     "\033[31m" 
-#define RESET   "\033[0m"
-
 /*	
 
 	initial state : 0  
@@ -291,20 +287,18 @@ int main(int argc, char const *argv[])
 
 				semi = 1;
 			}
-			else if( ( ( e >= 48 && e <= 57 ) || ( e >= 65 && e <= 90 ) || ( e >= 97 && e <= 122 ) || e == '_') && semi == 0 ){
+			// else if( ( ( e >= 48 && e <= 57 ) || ( e >= 65 && e <= 90 ) || ( e >= 97 && e <= 122 ) || e == '_') && semi == 1 ){
 
-				printf(RED"Invalid Syntax !");
-				printf(RESET"\n");
-			}
+			// 	semi = 1;
+			// }
 			else if( ( ( e >= 48 && e <= 57 ) || ( e >= 65 && e <= 90 ) || ( e >= 97 && e <= 122 ) || e == '_') && semi == 3 ){
 
-				printf(RED"Invalid Syntax !");
-				printf(RESET"\n");
+				printf("Invalid Syntax ! \n\n");
 				
 			}
 
 			
-			if (isalnum(e) > 0 || e == '_')
+			if (isalnum(e) > 0)
 			{
 				printf("%c",e);
 			}
