@@ -76,7 +76,7 @@ int main(int argc, char const *argv[])
 
 	while( fread(&e , 1 , 1 , in) == 1){
 
-		if (state >= 0)
+		if (state >= 0 && state < 200)
 		{
 			
 			if (isalpha(e) > 0)
@@ -116,8 +116,35 @@ int main(int argc, char const *argv[])
 					state = -1;
 
 				}
+
+				if (state != 2 && e == '/')
+				{
+					state = 199;
+				}
+				else if (state == 199 && e == '/')
+				{
+					state = 300;
+				}
+			}
+			else if (e == '\"')
+			{
+				state = 200;
 			}
 
+		}
+		else if(state == 200){
+
+			if (e == '\"')
+			{
+				state = 1;
+			}
+		}
+		else if(state == 300){
+
+			if (e == '\n')
+			{
+				state = 1;
+			}
 		}
 		else if ( state < 0 )
 		{

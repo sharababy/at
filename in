@@ -4,7 +4,7 @@ int main() {
 	
 	int a;
 
-	char f,h12,j;
+	//char f,h12,j;
 	printf("int kulwe");
-	// float p;
+ 	float p;
 }

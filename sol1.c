@@ -205,11 +205,11 @@ int main(int argc, char const *argv[])
 			}
 			else if (e == '/')
 			{
-				if (state != 299)
+				if (state != 199)
 				{
-					state = 299;
+					state = 199;
 				}
-				else if (state == 299)
+				else if (state == 199)
 				{
 					state = 300;
 				}
