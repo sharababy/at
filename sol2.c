@@ -92,15 +92,21 @@ int main(int argc, char const *argv[])
 				if (state == 0)
 				{
 					state = 1;
-					semi++;
+					
 				}
+				semi++;
 			}
 			else if (e == '}')
 			{
 				if (semi > 0 )
 				{
-					state = 0;
+					
 					semi--;
+				}
+
+				if (semi == 0)
+				{
+					state = 0;
 				}
 			}
 			else if (e == '=' || e == '+' || e == '-' || e == '*' || e == '/' || e == '%' || e == '>' || e == '<')
@@ -146,9 +152,11 @@ int main(int argc, char const *argv[])
 					printf("%c", e);
 					semi1 = 1;	
 				}
-				else{
+				else if(e == ')' && semi1 == 1){
+
 					state = 1;
 					semi1 = 0;
+
 					printf("\n");
 				}
 				
