@@ -142,10 +142,19 @@ int main(int argc, char const *argv[])
 					semi1 = 0;
 					printf("\n");
 				}
-				else if (isalpha(e) > 0)
+				else if (isalpha(e) > 0  && semi1 == 0)
 				{
 					state = 2;
 					semi1 = 0;
+				}
+				else if (isalpha(e) > 0  && semi1 == 1)
+				{
+					printf(RED"Invalid Syntax !");
+					printf(RESET"\n");
+				}
+				else if (e =='.'  && semi1 == 1)
+				{
+					printf("->Float\n");
 				}
 				else if( e >= 48 && e <= 57)
 				{
