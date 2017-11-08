@@ -7,6 +7,8 @@ int main() {
 	a = b + 2;
 	c = 4;
 
+	d[]
+
 	if( c == 4){
 	}
 	printf("a + 5");

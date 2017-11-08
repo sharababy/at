@@ -109,6 +109,10 @@ int main(int argc, char const *argv[])
 					state = 0;
 				}
 			}
+			else if (e == '[')
+			{
+				state = -1;
+			}
 			else if (e == '=' || e == '+' || e == '-' || e == '*' || e == '/' || e == '%' || e == '>' || e == '<')
 			{
 				if (state == 2)
@@ -178,6 +182,12 @@ int main(int argc, char const *argv[])
 				{
 					printf(RED"Invalid Syntax !");
 					printf(RESET"\n");
+				}
+				else if (e == ']')
+				{
+					printf("\n");
+					state = 2;
+					semi1 = 0;
 				}
 				else if (e =='.'  && semi1 == 1)
 				{
